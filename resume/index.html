@@ -3,20 +3,40 @@
   <head>
     <title>Limyes的个人简历</title>
     <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/loading.css?v=1">
     <script src="//at.alicdn.com/t/font_643758_s54cr9fhon6lmcxr.js"></script>
   </head>
   <body>
-    <div class="topNavBar">
+    <div id="siteWelcome" class="site-welcome active"><div class="loading"></div></div>
+    <div id= 'topNavBar' class="topNavBar">
       <div class="topNavBar-inner clearfix">
         <a class="logo" href="#" alt="logo" style="float: left; ">
           <span class="rs">RS</span><span class="card">card</span>
         </a>
-        <nav style="float: right;">
+        <nav class="menu" style="float: right;">
           <ul class="clearfix">
-            <li><a href="#">关于</a></li>
-            <li><a href="#">技能</a></li>
-            <li><a href="#">作品</a></li>
-            <li><a href="#">博客</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li>
+              <a href="#portfolio">作品</a>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">作品1</a></li>
+                  <li><a href="#">作品2</a></li>
+                  <li><a href="#">作品3</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">博客</a>
+              <div class="submenu">
+                <ul>
+                  <li><a href="#">博客1</a></li>
+                  <li><a href="#">博客2</a></li>
+                  <li><a href="#">博客3</a></li>
+                </ul>
+              </div>
+            </li>
             <li><a href="#">日历</a></li>
             <li><a href="#">联系方式</a></li>
             <li><a href="#">其他</a></li>
@@ -27,7 +47,7 @@
     <div class="banner">
       <div class="mask"></div>
     </div>
-    <main>
+    <main id="about" data-x>
       <div class="userCard ">
         <div class="pictureAndText clearfix">
           <div class="picture">
@@ -88,7 +108,7 @@
         技能：前端开发，Rails 开发，Node.js 开发
       </p>
     </main>
-    <section class="skills">
+    <section class="skills" id="skills" data-x>
       <h2>技能</h2>
       <ol class="clearfix">
         <li>
@@ -141,7 +161,7 @@
         </li>
       </ol>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="portfolio" data-x>
       <h2>作品集</h2>
       <nav>
         <ol class="clearfix">
@@ -179,6 +199,104 @@
     </div>
 
   </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+  <script>
+    setTimeout(function(){
+      siteWelcome.classList.remove("active");
+    },0);
+    setTimeout(function(){
+      slideC();
+    },100)
+    let specialTags=document.querySelectorAll('[data-x]');
+    for(let i=1;i<specialTags.length;i++){
+      specialTags[i].classList.add("offset");
+    }
+    slideC();
+    window.onscroll = function(scrollh){
+      if(window.scrollY > 0){
+        topNavBar.classList.add("sticky");
+      }else{
+        topNavBar.classList.remove("sticky");
+      }
+      slideC();     
+    } 
+    function slideC(){
+      let specialTags=document.querySelectorAll('[data-x]');
+      let minIndex=0;
+      for(let i=1;i<specialTags.length;i++){
+        if(Math.abs(specialTags[i].offsetTop-window.scrollY)<Math.abs(specialTags[minIndex].offsetTop-window.scrollY)){
+          minIndex=i;
+        }
+      }
+      specialTags[minIndex].classList.remove("offset");
+      
+      let id=specialTags[minIndex].id;
+      let a=document.querySelector('a[href="#'+id+'"]');
+      let li=a.parentNode;
+      let brothersAndMe=li.parentNode.children;
+      for(let i=0;i<brothersAndMe.length;i++){
+        brothersAndMe[i].classList.remove("highlight");
+      }
+        li.classList.add("highlight");
+    }
+
+    
+
+
+    let liTags=document.querySelectorAll("nav.menu>ul>li") ;
+      for(let i=0;i<liTags.length;i++){
+      liTags[i].onmouseenter=function(x){
+        x.currentTarget.classList.add("active");
+      }
+      liTags[i].onmouseleave=function(x){
+        x.currentTarget.classList.remove("active");
+      }
+     }
+
+     // 点击锚点跳转固定位置
+     let aTags=document.querySelectorAll("nav.menu>ul>li>a");
+     function animate(time) {
+        requestAnimationFrame(animate);
+        TWEEN.update(time);
+      }
+      requestAnimationFrame(animate);
+     for(let i=0;i<aTags.length;i++){
+      aTags[i].onclick=function(x){
+        x.preventDefault();
+        let href=x.currentTarget.getAttribute("href");
+        let element=document.querySelector(href)
+        let top=element.offsetTop;
+        // let n=20;
+        // let t=500/n;
+        let currentTop=window.scrollY;
+        let targetTop=top-80;
+        // let S=targetTop-currentTop;
+        // let s=S/n;
+        // let i=0;
+        // let id=setInterval(()=> {
+        //   if(i===n){
+        //     window.clearInterval(id);
+        //     return
+        //   }
+        //   i=i+1;
+        //   window.scrollTo(0,currentTop+s*i);
+        // },t)
+        let s = targetTop - currentTop; // 路程
+        var coords = { y: currentTop}; // 起始位置
+        var t = Math.abs((s/100)*300) // 时间
+        if(t>500){ t = 500 }
+          var tween = new TWEEN.Tween(coords) // 起始位置
+            .to({ y: targetTop}, t) // 结束位置 和 时间
+            .easing(TWEEN.Easing.Cubic.InOut) // 缓动类型
+            .onUpdate(function() {
+              // coords.y 已经变了
+              window.scrollTo(0,coords.y) // 如何更新界面
+            })
+            .start(); // 开始缓动
+        
+      }
+     }
+  </script>
 </body>
 
 </html>
