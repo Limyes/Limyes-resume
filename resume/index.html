@@ -166,9 +166,9 @@
       <h2>作品集</h2>
       <nav>
         <ol class="clearfix">
-          <li id="portfolio1">所有</li>
-          <li id="portfolio2">框架</li>
-          <li id="portfolio3">原生JS&amp;CSS</li>
+          <li id="portfolio1">键盘导航</li>
+          <li id="portfolio2">canvas画板</li>
+          <li id="portfolio3">无缝轮播</li>
         </ol>
       <div id="portfolioBar" class="bar state-1">
         <div class="bar-inner"></div>
@@ -181,9 +181,9 @@
               <img src="img/nav-keyboard.jpg"  alt="键盘导航"/>
             </a>
             <a class="swiper-slide" href="https://limyes.github.io/myBookmarks/canvas-demo/canvas.html">
-              <img src="img/canvas.jpg"  alt="画板"/>
+              <img src="img/canvas.jpg?v=1"  alt="画板"/>
             </a>
-            <a class="swiper-slide">
+            <a class="swiper-slide" href="https://limyes.github.io/myBookmarks/jqueryCarousel/index.html">
               <img src="img/carousel.jpg"  alt="无缝轮播"/>
             </a>
         </div>
@@ -197,8 +197,8 @@
   <script>
     // 初始化swiper
     var mySwiper = new Swiper ('.swiper-container', {
-      // direction: 'vertical',
       autoplay:true,
+      effect : 'fade',
       loop: true,
       pagination: {
         el: '.swiper-pagination',
