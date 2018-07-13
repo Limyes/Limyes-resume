@@ -2,12 +2,13 @@
 <html>
   <head>
     <title>Limyes的个人简历</title>
-    <link rel="stylesheet" href="css/style.css?v=4">
-    <link rel="stylesheet" href="css/loading.css?v=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <link rel="stylesheet" href="css/loading.css?v=1">  
     <script src="//at.alicdn.com/t/font_643758_s54cr9fhon6lmcxr.js"></script>
   </head>
   <body>
-    <div id="siteWelcome" class="site-welcome active"><div class="loading"></div></div>
+    <!-- <div id="siteWelcome" class="site-welcome active"><div class="loading"></div></div> -->
     <div id= 'topNavBar' class="topNavBar">
       <div class="topNavBar-inner clearfix">
         <a class="logo" href="#" alt="logo" style="float: left; ">
@@ -187,23 +188,38 @@
 
 
     <div class="works" style="height: 597px;">
-      <div class="big" style="top: 0; left: 0;">
-        <img src="./img/1.jpg" alt="作品1">
-      </div>
-      <div class="small" style="top: 0; left: 645px;">
-        <img src="./img/2.jpg" alt="作品2">
-      </div>
-      <div class="small" style="top: 312px; left: 645px;">
-        <img src="./img/3.jpg" alt="作品3">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <a class="swiper-slide">
+              <img src="img/nav-keyboard.jpg"  alt="键盘导航"/>
+            </a>
+            <a class="swiper-slide">
+              <img src="img/canvas.jpg"  alt="画板"/>
+            </a>
+            <a class="swiper-slide">
+              <img src="img/carousel.jpg"  alt="无缝轮播"/>
+            </a>
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
 
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.2.0/Tween.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
   <script>
-    setTimeout(function(){
-      siteWelcome.classList.remove("active");
-    },0);
+    // 初始化swiper
+    var mySwiper = new Swiper ('.swiper-container', {
+      // direction: 'vertical',
+      autoplay:'true',
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+      }
+    })  
+    // setTimeout(function(){
+    //   siteWelcome.classList.remove("active");
+    // },0);
     setTimeout(function(){
       slideC();
     },100)
@@ -239,9 +255,6 @@
       }
         li.classList.add("highlight");
     }
-
-    
-
 
     let liTags=document.querySelectorAll("nav.menu>ul>li") ;
       for(let i=0;i<liTags.length;i++){

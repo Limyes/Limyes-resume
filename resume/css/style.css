@@ -385,3 +385,6 @@ section.portfolio .works > .big,
 section.portfolio .works > .small {
   position: absolute;
 }
+.swiper-pagination-bullet-active{
+  background-color:#fff;
+}
