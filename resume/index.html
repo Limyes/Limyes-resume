@@ -174,26 +174,13 @@
         <div class="bar-inner"></div>
       </div>
     </nav>
-    <script>
-      portfolio1.onclick= function(){
-        portfolioBar.className = 'bar state-1'
-      }
-      portfolio2.onclick= function(){
-        portfolioBar.className = 'bar state-2'
-      }
-      portfolio3.onclick= function(){
-        portfolioBar.className = 'bar state-3'
-      }
-    </script>
-
-
     <div class="works" style="height: 597px;">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-            <a class="swiper-slide">
+            <a class="swiper-slide" href="https://limyes.github.io/myBookmarks/nav-demo/index.html">
               <img src="img/nav-keyboard.jpg"  alt="键盘导航"/>
             </a>
-            <a class="swiper-slide">
+            <a class="swiper-slide" href="https://limyes.github.io/myBookmarks/canvas-demo/canvas.html">
               <img src="img/canvas.jpg"  alt="画板"/>
             </a>
             <a class="swiper-slide">
@@ -211,12 +198,21 @@
     // 初始化swiper
     var mySwiper = new Swiper ('.swiper-container', {
       // direction: 'vertical',
-      autoplay:'true',
+      autoplay:true,
       loop: true,
       pagination: {
         el: '.swiper-pagination',
       }
-    })  
+    }) 
+    portfolio1.onclick= function(){
+        portfolioBar.className = 'bar state-1'
+      }
+      portfolio2.onclick= function(){
+        portfolioBar.className = 'bar state-2'
+      }
+      portfolio3.onclick= function(){
+        portfolioBar.className = 'bar state-3'
+    } 
     // setTimeout(function(){
     //   siteWelcome.classList.remove("active");
     // },0);
