@@ -368,15 +368,15 @@ section.portfolio > nav .bar-inner{
 }
 section.portfolio > nav .bar.state-1 .bar-inner{
   margin-left: 0;
-  width: 50px;
+  width: 64px;
 }
 section.portfolio > nav .bar.state-2 .bar-inner{
-  margin-left: 65px;
-  width: 50px;
+  margin-left: 105px;
+  width: 80px;
 }
 section.portfolio > nav .bar.state-3 .bar-inner{
-  margin-left: 140px;
-  width: 96px;
+  margin-left: 230px;
+  width: 60px;
 }
 section.portfolio .works{
   position: relative;
