@@ -282,7 +282,7 @@ section.portfolio{
   margin-top: 60px;
 }
 section.skills > h2 ,
-section.portfolio > h2 {
+section.portfolio > h2 ,section.message > h2{
   text-align: center;
   color: #3d4451;
   font-size: 34px;
@@ -387,4 +387,15 @@ section.portfolio .works > .small {
 }
 .swiper-pagination-bullet-active{
   background-color:#fff;
+}
+section.message ol{
+  max-width:700px;
+  margin:0 auto;
+  background-color:#f4f4f4;
+  border-top:1px solid #ddd;
+  border-bottom:1px solid #ddd;
+}
+section.message ol li{
+  padding:20px;
+  border-bottom:1px solid #ddd;
 }
