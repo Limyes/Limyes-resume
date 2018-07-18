@@ -215,7 +215,7 @@
       appKey: APP_KEY
     });
     // 存入数据
-    let myForm=document.querySlector('#postMessageForm')
+    let myForm=document.querySelector('#postMessageForm')
     myForm.addEventListener('submit',function(e){
       e.perventDefault();
       let name=myForm.querySelector('input[name=name]').value();
