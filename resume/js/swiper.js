@@ -1,6 +1,6 @@
 // 初始化swiper
 !function(){
-	var view=document.querySlector('.swiper-container');
+	var view=document.querySelector('.swiper-container');
 	var controller={
 		view:null,
 		swiper:null,
@@ -22,3 +22,4 @@
 	}
 	controller.init(view);
 }.call()
+

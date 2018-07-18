@@ -1,12 +1,12 @@
 !function(){
   var view=document.querySelector('#topNavBar');
   var controller={
-    view:null;
+    view:null,
     init:function(view){
       this.view=view;
       this.bindEvents();
     },
-    bindEvends:function(){
+    bindEvents:function(){
       var view=this.view;
       window.addEventListener('scroll',(scrollh)=>{
         if(window.scrollY > 0){
