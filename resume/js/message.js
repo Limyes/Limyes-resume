@@ -11,6 +11,7 @@
       this.initAV();
       this.loadMessages();
       this.bindEvents();
+      this.saveMessage();
     },
     initAV:function(){
       var APP_ID = 'Hq30oxE0ccnYaUEu43ogcbRM-gzGzoHsz';
@@ -40,7 +41,7 @@
     bindEvents:function(){
        this.form.addEventListener('submit',function(e){
         e.preventDefault();
-        saveMessage.call();
+        this.saveMessage();
       })
     },
     saveMessage:function(){
