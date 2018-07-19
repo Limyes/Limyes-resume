@@ -11,7 +11,6 @@
       this.initAV();
       this.loadMessages();
       this.bindEvents();
-      this.saveMessage();
     },
     initAV:function(){
       var APP_ID = 'Hq30oxE0ccnYaUEu43ogcbRM-gzGzoHsz';
@@ -39,13 +38,9 @@
       ).then(()=>{},(error)=>{console.log(error);})
     },
     bindEvents:function(){
-       this.form.addEventListener('submit',function(e){
-        e.preventDefault();
-        this.saveMessage();
-      })
-    },
-    saveMessage:function(){
         let myForm=this.form;
+        myForm.addEventListener('submit',function(e){
+        e.preventDefault();
         let name=myForm.querySelector('input[name=name]').value;
         let content=myForm.querySelector('input[name=content]').value;
         let Message= AV.Object.extend('Message');
@@ -56,11 +51,11 @@
         }).then(function(object) {
           let li=document.createElement('li');
           li.innerText=`${object.attributes.name}:${object.attributes.content}`;
-          var messageList=document.querySelector('#messageList');
-          messageList.appendChild(li);
+          this.messageList.appendChild(li);
           myForm.querySelector('input[name=name]').value='';
           myForm.querySelector('input[name=content]').value='';
         })
+      })
     }
   }
 controller.init(view);
