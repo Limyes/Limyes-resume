@@ -1,4 +1,5 @@
 !function(){
+  var view = document.querySelector('section.message')
   var model = {
     // 获取数据
     init: function(){
@@ -20,10 +21,6 @@
       })
     }
   }
-
-  var view = document.querySelector('section.message')
-
-
   var controller = {
     view: null,
     model: null,
@@ -31,12 +28,12 @@
     init: function(view, model){
       this.view = view
       this.model = model
-
       this.messageList = view.querySelector('#messageList')
       this.form = view.querySelector('form')
       this.model.init()
       this.loadMessages()
       this.bindEvents()
+      this.saveMessage()
     },
     loadMessages: function(){
       this.model.fetch().then(
@@ -69,10 +66,6 @@
         console.log(object)
       })
     }
-
   }
-
   controller.init(view, model)
-
-
 }.call()
