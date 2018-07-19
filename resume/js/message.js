@@ -33,7 +33,6 @@
       this.model.init()
       this.loadMessages()
       this.bindEvents()
-      this.saveMessage()
     },
     loadMessages: function(){
       this.model.fetch().then(
@@ -47,12 +46,6 @@
         } 
       )
     },
-    bindEvents: function(){
-      this.form.addEventListener('submit', function(e){
-        e.preventDefault()
-        this.saveMessage()
-      })
-    },
     saveMessage: function(){
       let myForm = this.form
       let content = myForm.querySelector('input[name=content]').value
@@ -62,10 +55,15 @@
         li.innerText = `${object.attributes.name}: ${object.attributes.content}`
         let messageList = document.querySelector('#messageList')
         messageList.appendChild(li)
-        myForm.querySelector('input[name=content]').value = ''
-        console.log(object)
+        myForm.querySelector('input[name=content]').value = '';
       })
-    }
+    },
+    bindEvents: function(){
+      this.form.addEventListener('submit', function(e){
+        e.preventDefault()
+        this.saveMessage()
+      })
+    }, 
   }
   controller.init(view, model)
 }.call()
