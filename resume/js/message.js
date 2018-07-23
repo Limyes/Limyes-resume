@@ -40,21 +40,25 @@
     bindEvents:function(){
         let myForm=this.form;
         myForm.addEventListener('submit',function(e){
-        e.preventDefault();
-        let name=myForm.querySelector('input[name=name]').value;
-        let content=myForm.querySelector('input[name=content]').value;
-        let Message= AV.Object.extend('Message');
-        let message = new Message();
-        message.save({
-          name:name,
-          content: content
-        }).then(function(object) {
-          let li=document.createElement('li');
-          li.innerText=`${object.attributes.name}:${object.attributes.content}`;
-          this.messageList.appendChild(li);
-          myForm.querySelector('input[name=name]').value='';
-          myForm.querySelector('input[name=content]').value='';
-        })
+          e.preventDefault();
+          let name=myForm.querySelector('input[name=name]').value;
+          let content=myForm.querySelector('input[name=content]').value;
+          if(name=""||content=""){
+            alert("该项不能为空");
+          }else{
+            let Message= AV.Object.extend('Message');
+            let message = new Message();
+            message.save({
+              name:name,
+              content: content
+            }).then(function(object) {
+              let li=document.createElement('li');
+              li.innerText=`${object.attributes.name}:${object.attributes.content}`;
+              this.messageList.appendChild(li);
+              myForm.querySelector('input[name=name]').value='';
+              myForm.querySelector('input[name=content]').value='';
+            })
+          }
       })
     }
   }
