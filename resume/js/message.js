@@ -43,7 +43,7 @@
           e.preventDefault();
           let name=myForm.querySelector('input[name=name]').value;
           let content=myForm.querySelector('input[name=content]').value;
-          if(name===""||content===""){
+          if(name===""||name.length===0||content===""||content.length===0){
             alert("该项不能为空");
           }else{
             let Message= AV.Object.extend('Message');
