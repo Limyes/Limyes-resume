@@ -102,7 +102,7 @@
         this.model.save({
           'name':name,
           'content':content
-        })then(function(object){
+        }).then(function(object){
           let li=document.createElement('li');
           li.innerText=`${object.attributes.name}:${object.attributes.content}`;
           this.messageList.appendChild(li);
