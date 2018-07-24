@@ -16,7 +16,7 @@ window.Model=function(options){
 		save:function(object){
 			let X= AV.Object.extend(resourceName);
             let x= new X();
-            message.save(object)
+            x.save(object)
 		}
 	}
 }
