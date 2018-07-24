@@ -74,9 +74,9 @@
     init:function(view,controller){
       this.messageList=view.querySelector('#messageList')
       this.form=view.querySelector('form')
-      this.loadMessage()
+      this.loadMessages()
     },
-    loadMessage:function(){
+    loadMessages:function(){
       this.model.fetch().then(
         (messages)=>{
           let array=messages.map((item)=>item.attributes)
@@ -89,7 +89,8 @@
       )
     },
     bindEvents:function(){
-      this.form.addEventsListener('submit',(e)=>{
+      console.log(this.form)
+      this.form.addEventListener('submit',(e)=>{
         e.preventDefault()
         this.saveMessage()
       })
