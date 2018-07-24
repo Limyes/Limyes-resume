@@ -1,4 +1,4 @@
-window.Model=function(){
+window.Model=function(options){
 	let resourceName=options.resourceName
 	return {
 		init:function(){
