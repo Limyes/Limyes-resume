@@ -99,9 +99,9 @@
       let myForm=this.form
       let name=myForm.querySelector('input[name=name]').value;
       let content=myForm.querySelector('input[name=content]').value;
-      if(name.replace(/(^\s*)|(\s*$)/g, "")===""||name.replace(/(^\s*)|(\s*$)/g, "").length===0||name===null||content.replace(/(^\s*)|(\s*$)/g, "")===""||content.replace(/(^\s*)|(\s*$)/g, "").length===0||content===null){
-        alert("该项不能为空");
-      }else{
+      // if(name.replace(/(^\s*)|(\s*$)/g, "")===""||name.replace(/(^\s*)|(\s*$)/g, "").length===0||name===null||content.replace(/(^\s*)|(\s*$)/g, "")===""||content.replace(/(^\s*)|(\s*$)/g, "").length===0||content===null){
+      //   alert("该项不能为空");
+      // }else{
         this.model.save({
           'name':name,
           'content':content
@@ -114,7 +114,7 @@
           myForm.querySelector('input[name=content]').value='';
         })
       }
-    }
+    // }
   })
   controller.init(view,model);
 }.call()
