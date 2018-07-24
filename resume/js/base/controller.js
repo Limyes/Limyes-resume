@@ -8,7 +8,7 @@ window.Controller=function(options){
 			this.model=model
 			this.model.init()
 			init.call(this,view,model)
-			options.bindEvents.call(this)
+			this.bindEvents.call(this)
 		}
 	}
 	for(let key in options){

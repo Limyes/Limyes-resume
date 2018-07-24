@@ -69,7 +69,9 @@
   var view=View('section.message')
   var model=Model({resourceName:'Message'})
   var controller=Controller({
-    init:function(){
+    messageList:null,
+    form:null,
+    init:function(view,controller){
       this.messageList=view.querySelector('#messageList')
       this.form=view.querySelector('form')
       this.loadMessage()
@@ -77,7 +79,7 @@
     loadMessage:function(){
       this.model.fetch().then(
         (messages)=>{
-          let array=message.map((item)=>item.attributes)
+          let array=messages.map((item)=>item.attributes)
           array.forEach((item)=>{
             let li=document.createElement('li')
             li.innerText=`${item.name}:${item.content}`
