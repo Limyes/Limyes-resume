@@ -65,56 +65,108 @@
 // controller.init(view);
 // }.call()
 
+// !function(){
+//   var view=View('section.message')
+//   var model=Model({resourceName:'Message'})
+//   var controller=Controller({
+//     messageList:null,
+//     form:null,
+//     init:function(view,controller){
+//       this.messageList=view.querySelector('#messageList')
+//       this.form=view.querySelector('form')
+//       this.loadMessages()
+//     },
+//     loadMessages:function(){
+//       this.model.fetch().then(
+//         (messages)=>{
+//           let array=messages.map((item)=>item.attributes)
+//           array.forEach((item)=>{
+//             let li=document.createElement('li')
+//             li.innerText=`${item.name}:${item.content}`
+//             this.messageList.appendChild(li)
+//           })
+//         }
+//       )
+//     },
+//     bindEvents:function(){
+//       console.log(this.form)
+//       this.form.addEventListener('submit',(e)=>{
+//         e.preventDefault()
+//         this.saveMessage()
+//       })
+//     },
+//     saveMessage:function(){
+//       let myForm=this.form
+//       let name=myForm.querySelector('input[name=name]').value;
+//       let content=myForm.querySelector('input[name=content]').value;
+//       if(name.replace(/(^\s*)|(\s*$)/g, "")===""||name.replace(/(^\s*)|(\s*$)/g, "").length===0||name===null||content.replace(/(^\s*)|(\s*$)/g, "")===""||content.replace(/(^\s*)|(\s*$)/g, "").length===0||content===null){
+//         alert("该项不能为空");
+//       }else{
+//         this.model.save({
+//           'name':name,
+//           'content':content
+//         }).then(function(object){
+//           let li=document.createElement('li');
+//           li.innerText=`${object.attributes.name}:${object.attributes.content}`;
+//           let messageList = document.querySelector('#messageList')
+//           messageList.appendChild(li);
+//           myForm.querySelector('input[name=name]').value='';
+//           myForm.querySelector('input[name=content]').value='';
+//         })
+//       }
+//     }
+//   })
+//   controller.init(view,model);
+// }.call()
 !function(){
-  var view=View('section.message')
-  var model=Model({resourceName:'Message'})
-  var controller=Controller({
-    messageList:null,
-    form:null,
-    init:function(view,controller){
-      this.messageList=view.querySelector('#messageList')
-      this.form=view.querySelector('form')
+  var model = Model({resourceName:'Message'})
+
+  var view = View('section.message')
+
+  var controller = Controller({
+    messageList: null,
+    form: null,
+    init: function(view, controller){
+      this.messageList = view.querySelector('#messageList')
+      this.form = view.querySelector('form')
       this.loadMessages()
     },
-    loadMessages:function(){
+    loadMessages: function(){
       this.model.fetch().then(
-        (messages)=>{
-          let array=messages.map((item)=>item.attributes)
+        (messages) => {
+          let array = messages.map((item)=> item.attributes )
           array.forEach((item)=>{
-            let li=document.createElement('li')
-            li.innerText=`${item.name}:${item.content}`
+            let li = document.createElement('li')
+            li.innerText = `${item.name}: ${item.content}`
             this.messageList.appendChild(li)
           })
-        }
+        } 
       )
     },
-    bindEvents:function(){
-      console.log(this.form)
-      this.form.addEventListener('submit',(e)=>{
+    bindEvents: function(){
+      this.form.addEventListener('submit', (e)=>{
         e.preventDefault()
         this.saveMessage()
       })
     },
-    saveMessage:function(){
-      let myForm=this.form
-      let name=myForm.querySelector('input[name=name]').value;
-      let content=myForm.querySelector('input[name=content]').value;
-      // if(name.replace(/(^\s*)|(\s*$)/g, "")===""||name.replace(/(^\s*)|(\s*$)/g, "").length===0||name===null||content.replace(/(^\s*)|(\s*$)/g, "")===""||content.replace(/(^\s*)|(\s*$)/g, "").length===0||content===null){
-      //   alert("该项不能为空");
-      // }else{
-        this.model.save({
-          'name':name,
-          'content':content
-        }).then(function(object){
-          let li=document.createElement('li');
-          li.innerText=`${object.attributes.name}:${object.attributes.content}`;
-          let messageList = document.querySelector('#messageList')
-          messageList.appendChild(li);
-          myForm.querySelector('input[name=name]').value='';
-          myForm.querySelector('input[name=content]').value='';
-        })
-      }
-    // }
+    saveMessage: function(){
+      let myForm = this.form
+      let content = myForm.querySelector('input[name=content]').value
+      let name = myForm.querySelector('input[name=name]').value
+      this.model.save({
+        'name': name, 'content': content
+      }).then(function(object) {
+        let li = document.createElement('li')
+        li.innerText = `${object.attributes.name}: ${object.attributes.content}`
+        let messageList = document.querySelector('#messageList')
+        messageList.appendChild(li)
+        myForm.querySelector('input[name=content]').value = ''
+        console.log(object)
+      })
+    }
   })
-  controller.init(view,model);
+
+  controller.init(view, model)
+
+
 }.call()
