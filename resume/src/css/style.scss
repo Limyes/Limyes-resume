@@ -1,5 +1,5 @@
 body {
-  background: #efefef;
+  background:#efefef;
   color: black;
   margin: 0;
 }
@@ -65,8 +65,10 @@ h1,h2,h3,h4,h5,h6{
 .topNavBar-inner{
   padding:0px 16px;
 }
-.topNavBar  nav {
-  padding-top: 5px;
+.topNavBar{
+  nav {
+    padding-top: 5px;
+  }
 }
 .topNavBar nav > ul {
   list-style: none;
